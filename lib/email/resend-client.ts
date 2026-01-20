@@ -3,7 +3,16 @@ import { getEnv } from '@/lib/env';
 import DailyReport from './templates/daily-report';
 import AnomalyAlert from './templates/anomaly-alert';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Lazy instantiation to avoid build-time errors
+let resendClient: Resend | null = null;
+
+function getResendClient(): Resend {
+  if (!resendClient) {
+    const env = getEnv();
+    resendClient = new Resend(env.RESEND_API_KEY);
+  }
+  return resendClient;
+}
 
 interface Relatorio {
   anomalias: Array<{
@@ -22,6 +31,7 @@ interface Relatorio {
 export async function enviarRelatorioEmail(relatorio: Relatorio) {
   try {
     const env = getEnv();
+    const resend = getResendClient();
     
     const { data, error } = await resend.emails.send({
       from: env.EMAIL_FROM,
@@ -49,6 +59,7 @@ export async function enviarRelatorioEmail(relatorio: Relatorio) {
 export async function enviarAlertaAnomalia(anomalia: Relatorio['anomalias'][0]) {
   try {
     const env = getEnv();
+    const resend = getResendClient();
     
     const { data, error } = await resend.emails.send({
       from: env.EMAIL_FROM,
