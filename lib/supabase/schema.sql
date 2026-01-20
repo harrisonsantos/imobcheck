@@ -1,0 +1,2 @@
+-- Este arquivo é uma cópia do schema para referência
+-- As migrations reais estão em supabase/migrations/
