@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Auditoria de Vendas - Vista",
-  description: "Sistema de auditoria de vendas imobiliárias",
+  title: "eXp ImobCheck - Auditoria Inteligente de Negócios Imobiliários",
+  description: "Plataforma de monitoramento automatizado, detecção de anomalias e conformidade em tempo real para operações imobiliárias da eXp Realty Brasil",
 };
 
 export default function RootLayout({
