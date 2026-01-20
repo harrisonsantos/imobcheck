@@ -16,16 +16,16 @@ const envSchema = z.object({
 
 export function getEnv() {
   return envSchema.parse({
-    NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL,
-    NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
-    SUPABASE_SERVICE_ROLE_KEY: process.env.SUPABASE_SERVICE_ROLE_KEY,
-    RESEND_API_KEY: process.env.RESEND_API_KEY,
-    EMAIL_FROM: process.env.EMAIL_FROM,
-    EMAIL_TO: process.env.EMAIL_TO,
-    VISTA_API_KEY: process.env.VISTA_API_KEY,
-    VISTA_API_URL: process.env.VISTA_API_URL || 'http://sandbox-rest.vistahost.com.br',
-    VISTA_WEBHOOK_SECRET: process.env.VISTA_WEBHOOK_SECRET,
-    CRON_SECRET: process.env.CRON_SECRET,
-    NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000',
+    NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL?.trim(),
+    NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY?.trim(),
+    SUPABASE_SERVICE_ROLE_KEY: process.env.SUPABASE_SERVICE_ROLE_KEY?.trim(),
+    RESEND_API_KEY: process.env.RESEND_API_KEY?.trim(),
+    EMAIL_FROM: process.env.EMAIL_FROM?.trim(),
+    EMAIL_TO: process.env.EMAIL_TO?.trim(),
+    VISTA_API_KEY: process.env.VISTA_API_KEY?.trim(),
+    VISTA_API_URL: process.env.VISTA_API_URL?.trim() || 'http://sandbox-rest.vistahost.com.br',
+    VISTA_WEBHOOK_SECRET: process.env.VISTA_WEBHOOK_SECRET?.trim(),
+    CRON_SECRET: process.env.CRON_SECRET?.trim(),
+    NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL?.trim() || 'http://localhost:3000',
   });
 }
